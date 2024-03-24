@@ -2,12 +2,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 export default function ContactForm({ handleSubmit }) {
-  const phoneRegExp = /^\d{10}$/;
+  const phonePattern = /^\d{3}-\d{2}-\d{2}$/;
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Required"),
     number: Yup.string()
-      .matches(phoneRegExp, "Phone number must be 10 digits")
+      .matches(phonePattern, "Wrong phone number!")
       .required("Required"),
   });
 
